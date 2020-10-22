@@ -21,19 +21,18 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+%this X is just an extraction of original X matrix
+X = [ones(m, 1) X];  % 1 * 401
 
-X = [ones(m, 1) X];  % 5000 * 401
-t1 = sigmoid(X * Theta1'); %  5000 * 401 X 401 * 25 = 5000 * 25 
+fprintf('X size:\n');
+fprintf(' %f \n', size(X));
+
+t1 = sigmoid(X * Theta1'); %  1 * 401 X 401 * 25 = 1 * 25 
 t1 = [ones(m, 1) t1]; % 5000 * 26
 
-t2 = sigmoid( t1 * Theta2'); %  5000 * 26 X 26 * 10 = 5000 * 10
+t2 = sigmoid( t1 * Theta2'); %  1 * 26 X 26 * 10 = 1 * 10
 
-[~, p] = max(t2, [], 2);
-
-
-
-
-
+[~, p] = max(t2, [], 2);% get the max index from t2
 
 % =========================================================================
 

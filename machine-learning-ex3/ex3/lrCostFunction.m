@@ -37,17 +37,25 @@ grad = zeros(size(theta));
 %
 
 
-h = sigmoid(X * theta); 
+h = sigmoid(X * theta); %if 5X4 * 4X1 --> 5X1
 
-errors = ( - y' * log( h ) ) - ( 1 - y' ) * log( 1 - h ) 
+errors = ( - y' * log( h ) ) - ( 1 - y' ) * log( 1 - h ) %if 1X5 * 5X1 --> 1X1
+
+fprintf('Errors:\n');
+
+fprintf(' %f \n', errors);
+
+fprintf(' %f \n', sum(errors));
 
 rp = ( (lambda/(2*m) ) * sum(theta(2:length(theta)).^2))   %regularization parameter
 
 J = 1/m * sum( errors ) + rp 
 
-grad = (X'*(h - y))/m; 
+grad = (X'*(h - y))/m; %if 4X5 * 5x1 --> 4x1
 
 %fprintf(' %f \n', grad);
+
+%those are the gradients for gradient descent iteration on the algorithm
 
 grad(2:length(grad)) = grad(2:length(grad))   +  (( lambda/m ) * theta(2:length(theta))  ) ;  
 

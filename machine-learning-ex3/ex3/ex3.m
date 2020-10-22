@@ -30,7 +30,7 @@ num_labels = 10;          % 10 labels, from 1 to 10
 %
 
 % Load Training Data
-fprintf('Loading and Visualizing Data ...\n')
+fprintf('Loading and Visualizing Data :) ...\n')
 
 load('ex3data1.mat'); % training data stored in arrays X, y
 m = size(X, 1);
@@ -57,7 +57,7 @@ fprintf('\nTesting lrCostFunction() with regularization');
 
 theta_t = [-2; -1; 1; 2]; % 4*1
 X_t = [ones(5,1) reshape(1:15,5,3)/10]; % 5*4
-y_t = ([1;0;1;0;1] >= 0.5); % 4*1
+y_t = ([1;0;1;0;1] >= 0.5); % 5*1
 lambda_t = 3;
 [J grad] = lrCostFunction(theta_t, X_t, y_t, lambda_t);
 
@@ -65,6 +65,8 @@ fprintf('\nCost: %f\n', J);
 fprintf('Expected cost: 2.534819\n');
 fprintf('Gradients:\n');
 fprintf(' %f \n', grad);
+fprintf('Size Grad:\n');
+fprintf(' %f \n', size(grad));
 fprintf('Expected gradients:\n');
 fprintf(' 0.146561\n -0.548558\n 0.724722\n 1.398003\n');
 
